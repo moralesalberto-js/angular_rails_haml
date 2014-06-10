@@ -46,3 +46,4 @@ group :test do
 end
 
 gem 'angularjs-rails'
+gem 'faker'

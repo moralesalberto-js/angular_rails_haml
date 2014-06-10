@@ -1,0 +1,7 @@
+%h1 Projects Listing
+
+%div{'ng-app' => 'Projects'}
+  %div{ng_controller: "ProjectsCtrl"}
+    %ul
+      %li{ ng_repeat: "project in projects" }
+        {{ project.name }}
