@@ -1,0 +1,7 @@
+%h1 Sign in
+= form_tag sessions_path, :class => 'sign_in', :method => :post do |f|
+  = text_field_tag :email, '', :class => 'login-form', :autofocus => true, :placeholder => 'Email'
+  %br
+  = password_field_tag :password, '', :class => 'login-form', :placeholder => 'Password'
+  %br
+  %input(type="submit" value="Sign in" class="button")

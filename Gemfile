@@ -41,8 +41,11 @@ gem 'bcrypt'
 gem 'haml-rails'
 
 group :test do
+  gem 'fabrication'
+  gem 'simplecov'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
+  gem 'fivemat'
 end
 
 group :test, :development do

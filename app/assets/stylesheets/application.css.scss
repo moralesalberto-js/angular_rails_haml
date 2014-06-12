@@ -10,6 +10,21 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
  *= require_self
  */
+
+body {
+  font-family: Arial;
+  background-color: #FFFEE4;
+}
+
+#navigation a {
+  float: right;
+}
+
+#flash_messages {
+  color: white;
+  background-color: orange;
+  padding: 1em;
+  width: 50%;
+}

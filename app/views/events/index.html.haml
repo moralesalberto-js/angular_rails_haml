@@ -1,0 +1,8 @@
+= render 'shared/navigation'
+
+%h1 User Events
+%div{'ng-app' => 'Events'}
+  %div{ng_controller: "EventsCtrl"}
+    %ul
+      %li{ ng_repeat: "event in events" }
+        {{ event.title }}

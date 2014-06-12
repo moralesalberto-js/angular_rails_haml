@@ -44,10 +44,13 @@ GEM
     columnize (0.8.9)
     debugger-linecache (1.2.0)
     diff-lcs (1.2.5)
+    docile (1.1.3)
     erubis (2.7.0)
     execjs (2.2.0)
+    fabrication (2.11.2)
     faker (1.3.0)
       i18n (~> 0.5)
+    fivemat (1.3.1)
     haml (4.0.5)
       tilt
     haml-rails (0.5.3)
@@ -119,6 +122,11 @@ GEM
       rdoc (~> 4.0, < 5.0)
     shoulda-matchers (2.6.1)
       activesupport (>= 3.0.0)
+    simplecov (0.8.2)
+      docile (~> 1.1.0)
+      multi_json
+      simplecov-html (~> 0.8.0)
+    simplecov-html (0.8.0)
     spring (1.1.3)
     sprockets (2.11.0)
       hike (~> 1.2)
@@ -152,7 +160,9 @@ DEPENDENCIES
   bcrypt
   byebug
   coffee-rails (~> 4.0.0)
+  fabrication
   faker
+  fivemat
   haml-rails
   jbuilder (~> 2.0)
   jquery-rails
@@ -161,6 +171,7 @@ DEPENDENCIES
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   shoulda-matchers
+  simplecov
   spring
   sqlite3
   turbolinks
