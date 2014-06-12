@@ -1,10 +1,11 @@
 NgApp -- Events
 ===============
 
-This is a sample app combining rails4 and angular. This is a combination site that
-allows the user to authenticate with regular http and html forms, then sets a user session.
+This is a sample app combining rails4 and angular. It leverages the information at:
+http://vaporbase.com/postings/integrating-angular-dot-js-with-rails-part-2
 
-Once logged in, the user is redirected to a page that serves and angular app.
+In this app, the user is able to authenticate with regular http and html forms, then sets a user session.
+Once logged in, the user is redirected to a page that serves an angular app (events/index).
 
 The intent is for this app to combine both angular app(s) and rails http/html pages, both
 working in unison, sharing the user session.

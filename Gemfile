@@ -49,6 +49,8 @@ group :test do
 end
 
 group :test, :development do
+  gem 'teaspoon'
+  gem 'phantomjs'
   gem 'byebug'
   gem 'sqlite3'
 end
