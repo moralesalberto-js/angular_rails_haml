@@ -24,10 +24,10 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-gem 'spring',        group: :development
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt'
+
 
 # Use unicorn as the app server
 # gem 'unicorn'
@@ -52,7 +52,12 @@ group :test, :development do
   gem 'byebug'
 end
 
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end
+
 gem 'angularjs-rails'
 gem 'faker'
 
-
+ruby '2.1.1'
