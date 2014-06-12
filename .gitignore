@@ -22,4 +22,6 @@ pickle-email-*.html
 .rvmrc
 
 *.swp
+.DS_Store
+
 
