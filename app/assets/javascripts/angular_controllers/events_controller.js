@@ -3,8 +3,8 @@
 // It also contains the objects and functions to affect the UI
 // like adding elements to a listing
 // these functions can be accessed from the UI by writing
-// $scope.name_of_function_here
-// Examples:
+//
+// Example how to access:
 // eventsController.action.newAction
 // eventsController.action.indexAction
 var eventsController = function () {

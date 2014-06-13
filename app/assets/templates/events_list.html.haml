@@ -1,3 +1,14 @@
-%ul
-  %li{ ng_repeat: "event in events" }
-    {{ event.title }}
+%h3 My Calendar Events
+%table{border: 1}
+  %thead
+    %tr
+      %th
+        Title
+      %th
+        Description
+  %tbody
+    %tr{ ng_repeat: "event in events" }
+      %td
+        {{ event.title }}
+      %td
+        {{ event.description }}

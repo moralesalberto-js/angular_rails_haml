@@ -21,19 +21,23 @@ var angularApp = angular.module('angularApp', ['ngResource', 'ngRoute', 'templat
 
 // ROUTE CONFIGURATION
 // Map the URL to a specific controller action and a template
+// We map one controller action and provide a template Url to display
+// By calling a specific 'action' function, one is able to set some state
+// prior to showing the template
+// 
+// The templates are displayed in the ng-view html element
+// There appears to be only one of these at a time
 angularApp.config(function ($routeProvider, $httpProvider) {
 
   $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content');
 
-  $routeProvider
-  .when('/events_list',
-    {
-      controller: 'eventsController.action.indexAction', templateUrl: 'events_list.html'
-    })
-  .when('/events_new',
-    {
-      controller: 'eventsController.action.newAction', templateUrl: 'events_new.html'
-    })
+  $routeProvider.when('/events_list', {
+    controller: 'eventsController.action.indexAction', templateUrl: 'events_list.html'
+  });
+
+  $routeProvider.when('/events_new', {
+    controller: 'eventsController.action.newAction', templateUrl: 'events_new.html'
+  });
 
 
 });
