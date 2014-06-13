@@ -1,5 +1,6 @@
-# the $ sign in mainly a naming convention in angular
-# to denote their built-in services
+# To run these tests
+# fire your browser and go to localhost:3000/teaspoon
+
 describe "EventsCtrl", ->
   $fixture = [
     { id: 1, title : "event1", description : "test"},
