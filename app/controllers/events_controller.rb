@@ -1,6 +1,6 @@
 # This is strictly a json api, all views are json
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show]
+  before_action :set_event, only: [:show, :destroy]
   def index
     @events = current_user.events
   end
@@ -20,6 +20,14 @@ class EventsController < ApplicationController
       end
     end
   end
+
+  def destroy
+    @event.destroy 
+    respond_to do |format|
+      format.json { head :no_content }
+    end 
+  end
+
 
   private
 

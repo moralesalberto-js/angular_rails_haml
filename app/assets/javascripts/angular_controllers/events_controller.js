@@ -11,10 +11,9 @@ var eventsController = function () {
 
   // INTERNAL VARIABLES AND FUNCTIONS
   //
-  var theEvents = [];
 
-  var loadEvents = function ($resource) {
-    theEvents = $resource('/events.json').query();
+  var loadEvents = function ($scope, $resource) {
+    $scope.events = $resource('/events/:id.json', {id: '@id'}).query();
   };
 
   var constructNewEvent = function ($scope) {
@@ -23,22 +22,23 @@ var eventsController = function () {
     $scope.theEvent.description = ""; 
   };
 
-
   var actionNamespace = {
-    indexAction : function ($scope, $resource) {
-      loadEvents($resource);
-      $scope.events = theEvents; // We assign theEvents to the view events array
+    indexAction : function ($scope, $resource, $location) {
+      loadEvents($scope, $resource);
+
+      $scope.deleteEvent = function(theEvent) {
+        theEvent.$delete(); 
+        loadEvents($scope, $resource);
+      };
     },
 
-    newAction : function ($scope, $resource) {
-      // whatever preparation we need before showing
-      // the new template
+    newAction : function ($scope, $resource, $location) {
       constructNewEvent($scope);
 
       $scope.save = function () {
         $resource('/events/:id.json').save($scope.theEvent);// Save the new calendar event to the server
+        $location.path('/events_list');
       };
-
 
     }
 

@@ -9,5 +9,5 @@ var angularAppController = function ($scope, $location, $resource) {
 
   $scope.newEvent = function () {
     $location.path("events_new");
-  }
+  };
 };

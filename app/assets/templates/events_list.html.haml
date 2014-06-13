@@ -6,9 +6,13 @@
         Title
       %th
         Description
+      %th
   %tbody
     %tr{ ng_repeat: "event in events" }
       %td
         {{ event.title }}
       %td
         {{ event.description }}
+      %td
+        %button{ng_click: 'deleteEvent(event);'}
+          Delete
