@@ -1,4 +1,4 @@
-describe("EventsCtrl", function() {
+describe("EventsController.action.indexAction", function() {
   var $controller, $fixture, $httpBackend, $scope;
   $fixture = [
     { id: 1,
@@ -13,7 +13,7 @@ describe("EventsCtrl", function() {
   $scope = null;
   $controller = null;
   $httpBackend = null;
-  beforeEach(module("Events"));
+  beforeEach(module("angularApp"));
 
   beforeEach(inject(function($injector) {
     $scope = $injector.get('$rootScope').$new();
@@ -31,7 +31,7 @@ describe("EventsCtrl", function() {
   });
 
   return it("creates an events collection with index request", function() {
-    $controller(EventsCtrl, {
+    $controller(eventsController.action.indexAction, {
       $scope: $scope
     });
     expect($scope.events).toEqualData([]);

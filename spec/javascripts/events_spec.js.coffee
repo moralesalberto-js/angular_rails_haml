@@ -1,7 +1,7 @@
 # To run these tests
 # fire your browser and go to localhost:3000/teaspoon
 
-describe "EventsCtrl", ->
+describe "EventsController.action.indexAction", ->
   $fixture = [
     { id: 1, title : "event1", description : "test"},
     { id: 2, title : "event2", description : "test"}
@@ -11,7 +11,7 @@ describe "EventsCtrl", ->
   $controller = null
   $httpBackend = null
 
-  beforeEach module("Events")
+  beforeEach module("angularApp")
 
   beforeEach inject ($injector) ->
     $scope = $injector.get('$rootScope').$new()
@@ -29,7 +29,7 @@ describe "EventsCtrl", ->
     })
 
   it "creates an events collection with index request", ->
-    $controller(EventsCtrl, {$scope : $scope })
+    $controller(eventsController.action.indexAction, {$scope : $scope })
     expect($scope.events).toEqualData []
     $httpBackend.flush()
     expect($scope.events.length).toBe(2)
