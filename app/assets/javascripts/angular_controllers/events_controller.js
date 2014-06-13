@@ -37,7 +37,6 @@ var eventsController = function () {
 
       $scope.save = function () {
         $resource('/events/:id.json').save($scope.theEvent);// Save the new calendar event to the server
-        constructNewEvent($scope);
       };
 
 
