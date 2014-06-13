@@ -20,6 +20,10 @@ angularApp.config(function ($routeProvider, $httpProvider) {
     {
       controller: 'EventsController', templateUrl: 'events_list.html'
     })
+  .when('/events_new',
+    {
+      controller: 'EventsController', templateUrl: 'events_new.html'
+    })
 
 
 });

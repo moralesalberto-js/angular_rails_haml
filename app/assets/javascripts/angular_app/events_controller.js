@@ -5,9 +5,13 @@ var EventsController = function ($scope, $location) {
   };
 
   $scope.showListing = function() {
+    loadEvents();
     $location.path("events_list")
   };
 
-  loadEvents();
+  $scope.newEvent = function () {
+    $location.path("events_new")
+  }
+
 
 }
