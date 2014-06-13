@@ -1,8 +1,8 @@
 = render 'shared/navigation'
 
 %div{'ng-app' => 'angularApp'}
-  %div{ng_controller: 'EventsController'}
-    %button{'ng-click' => 'showListing()'}
+  %div{ng_controller: 'angularAppController'}
+    %button{'ng-click' => 'showEventsListing()'}
       Show My Events
     %button{'ng-click' => 'newEvent()'}
       New Event

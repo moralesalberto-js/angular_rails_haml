@@ -1,5 +1,5 @@
+# This is strictly a json api, all views are json
 class EventsController < ApplicationController
-  layout 'events_angular'
 
   def index
     @events = current_user.events
@@ -9,7 +9,7 @@ class EventsController < ApplicationController
 
   end
 
-  # POST /ducks.json
+
   def create
     @event = current_user.events.create(event_params)
     respond_to do |format|

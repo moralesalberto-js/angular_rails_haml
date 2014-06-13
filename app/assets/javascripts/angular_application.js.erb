@@ -12,17 +12,22 @@
 
 var angularApp = angular.module('angularApp', ['ngResource', 'ngRoute', 'templates']);
 
+
+// This is the angular configuration of all the routes (views) it will support
+// Also we set other configurations such as the cross domain token security
+// so that rails does not complain
 angularApp.config(function ($routeProvider, $httpProvider) {
+
   $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content');
 
   $routeProvider
   .when('/events_list',
     {
-      controller: 'EventsController', templateUrl: 'events_list.html'
+      controller: 'eventsListController', templateUrl: 'events_list.html'
     })
   .when('/events_new',
     {
-      controller: 'EventsController', templateUrl: 'events_new.html'
+      controller: 'newEventController', templateUrl: 'events_new.html'
     })
 
 

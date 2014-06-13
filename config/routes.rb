@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root 'angular_application#index'
 
-  resource :events
+  resources :events
 
   resource :sessions, :only => [:create]
   get 'sign_in' => 'sessions#new'
