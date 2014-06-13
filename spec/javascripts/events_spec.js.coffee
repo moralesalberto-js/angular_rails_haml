@@ -1,6 +1,7 @@
 describe "EventsCtrl", ->
   $fixture = [
-    { id: 1, title : "test", description : "test"}
+    { id: 1, title : "event1", description : "test"},
+    { id: 2, title : "event2", description : "test"}
   ]
 
   $scope = null
@@ -9,7 +10,7 @@ describe "EventsCtrl", ->
 
   beforeEach module("Events")
 
-  beforeEach inject($injector) ->
+  beforeEach inject ($injector) ->
     $scope = $injector.get('$rootScope').$new()
     $controller = $injector.get('$controller')
     $httpBackend = $injector.get("$httpBackend")
@@ -19,5 +20,5 @@ describe "EventsCtrl", ->
     $controller(EventsCtrl, {$scope : $scope })
     expect($scope.events).toBeUndefined()
     $httpBackend.flush()
-    expect($scope.events.length).toBe(1)
+    expect($scope.events.length).toBe(2)
     expect($scope.events).toEqual $fixture
