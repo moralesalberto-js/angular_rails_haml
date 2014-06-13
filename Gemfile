@@ -49,6 +49,7 @@ group :test do
 end
 
 group :test, :development do
+  gem 'rubocop'
   gem 'teaspoon'
   gem 'phantomjs'
   gem 'byebug'

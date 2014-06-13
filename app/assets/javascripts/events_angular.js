@@ -15,3 +15,4 @@
 //= require turbolinks
 //= require angular
 //= require events
+//= require angular-resource
