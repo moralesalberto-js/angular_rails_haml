@@ -8,6 +8,6 @@ var angularAppController = function ($scope, $location) {
   };
 
   $scope.newEvent = function () {
-    $location.path("events_new")
+    $location.path("events_new");
   }
 };

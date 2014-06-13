@@ -8,14 +8,19 @@
 //= require angular-route
 //= require angular-rails-templates
 //= require_tree ../templates
-//= require_tree ./angular_app
+//= require_tree ./angular_controllers
 
+// START ANGULAR
+// This is the instantiation of the Angular app, and we pass the modules we are using
+// we are using ngResource for REST resources
+// ngRoute to set the routes (URL to controller and template mapping)
+// templates is a js library that allows us to use HAML in our templates
+// and use the asset pipeline in rails (compression, compiling)
 var angularApp = angular.module('angularApp', ['ngResource', 'ngRoute', 'templates']);
 
 
-// This is the angular configuration of all the routes (views) it will support
-// Also we set other configurations such as the cross domain token security
-// so that rails does not complain
+// ROUTE CONFIGURATION
+// Map the URL to a specific controller action and a template
 angularApp.config(function ($routeProvider, $httpProvider) {
 
   $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content');
@@ -23,11 +28,11 @@ angularApp.config(function ($routeProvider, $httpProvider) {
   $routeProvider
   .when('/events_list',
     {
-      controller: 'eventsListController', templateUrl: 'events_list.html'
+      controller: 'eventsController.action.indexAction', templateUrl: 'events_list.html'
     })
   .when('/events_new',
     {
-      controller: 'newEventController', templateUrl: 'events_new.html'
+      controller: 'eventsController.action.newAction', templateUrl: 'events_new.html'
     })
 
 

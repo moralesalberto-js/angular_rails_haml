@@ -1,1 +1,18 @@
-this is new
+%h3 Enter a calendar event:
+
+%label
+  Title:
+%input{ ng_model: 'theEvent.title', type: 'text' }
+%br
+
+%label
+  Description:
+%br
+%textarea{ ng_model: 'theEvent.description' }
+%br
+
+%button{ng_click: 'save()'}
+  Save
+
+
+
