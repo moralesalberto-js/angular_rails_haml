@@ -61,7 +61,12 @@ group :production do
   gem 'rails_12factor'
 end
 
+
 gem 'angularjs-rails'
+gem 'angular-rails-templates'
+
 gem 'faker'
+
+
 
 ruby '2.1.1'

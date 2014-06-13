@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-  root 'events#index'
+  root 'angular_application#index'
 
-  resources :events
+  resource :events
 
   resource :sessions, :only => [:create]
   get 'sign_in' => 'sessions#new'

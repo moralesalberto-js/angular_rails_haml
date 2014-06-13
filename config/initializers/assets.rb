@@ -1,4 +1,4 @@
-Rails.application.config.assets.precompile += %w( events_angular.css events_angular.js )
+Rails.application.config.assets.precompile += %w( angular_application.css angular_application.js )
 Rails.application.config.assets.precompile += %w( teaspoon.css )
 Rails.application.config.assets.precompile += %w( jasmine/1.3.1.js )
 Rails.application.config.assets.precompile += %w( teaspoon-jasmine.js )

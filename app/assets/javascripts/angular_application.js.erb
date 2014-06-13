@@ -1,0 +1,25 @@
+// This is a manifest for the angular application that we will call angularApp
+//
+//= require jquery
+//= require jquery_ujs
+//= require turbolinks
+//= require angular
+//= require angular-resource
+//= require angular-route
+//= require angular-rails-templates
+//= require_tree ../templates
+//= require_tree ./angular_app
+
+var angularApp = angular.module('angularApp', ['ngResource', 'ngRoute', 'templates']);
+
+angularApp.config(function ($routeProvider, $httpProvider) {
+  $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content');
+
+  $routeProvider
+  .when('/events_list',
+    {
+      controller: 'EventsController', templateUrl: 'events_list.html'
+    })
+
+
+});
