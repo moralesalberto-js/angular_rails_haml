@@ -6,6 +6,16 @@
 %br
 
 %label
+  Start Time:
+%input{ ng_model: 'theEvent.start_time', type: 'text'}
+
+%br
+%label
+  End Time:
+%input{ ng_model: 'theEvent.end_time', type: 'text' }
+
+%br
+%label
   Description:
 %br
 %textarea{ ng_model: 'theEvent.description' }

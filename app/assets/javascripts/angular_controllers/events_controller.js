@@ -19,7 +19,9 @@ var eventsController = function () {
   var constructNewEvent = function ($scope) {
     $scope.theEvent = {};
     $scope.theEvent.title = "";
-    $scope.theEvent.description = ""; 
+    $scope.theEvent.description = "";
+    $scope.theEvent.start_time = new Date();
+    $scope.theEvent.end_time = new Date();
   };
 
   var actionNamespace = {

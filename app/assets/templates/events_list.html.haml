@@ -7,12 +7,21 @@
       %th
         Description
       %th
+        Start Time
+      %th
+        End Time
+      %th
+        &nbsp;
   %tbody
     %tr{ ng_repeat: "event in events" }
       %td
         {{ event.title }}
       %td
         {{ event.description }}
+      %td
+        {{ event.start_time }}
+      %td
+        {{ event.end_time }}
       %td
         %button{ng_click: 'deleteEvent(event);'}
           Delete
