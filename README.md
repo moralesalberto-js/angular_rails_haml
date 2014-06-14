@@ -40,9 +40,18 @@ SessionsController to manage authentication. This authentication is leveraged bo
 for rails and angular requests.
 
 ### Angular
-I want to create a familiar feel to the directory structure found in rails. I also want to
-have the ability to have the concept of controller 'actions', rather than just a controller.
-Read on, to understand how that is setup.
+The javascript directory structure looks like this:
+
+```
+| app
+| assets
+| -- application.js
+| -- angular_application.js
+| -- angular_controllers
+| --- angular_app_controller.js
+| --- event_controller.js
+
+```
 
 ### angular_application.js
 The intent is to be able to serve both a conventional rails app and the angular application
@@ -52,7 +61,7 @@ from the same server. So we have two separate javascripts that get compiled:
 * angular_application.js
 
 The compiler directive for the asset pipeline is defined in /config/initializers/assets.rb
-shown below:
+shown below. There is also teaspoon and jasmine to for testing.
 
 ```
 Rails.application.config.assets.precompile += %w( angular_application.css angular_application.js )
@@ -61,4 +70,75 @@ Rails.application.config.assets.precompile += %w( jasmine/1.3.1.js )
 Rails.application.config.assets.precompile += %w( teaspoon-jasmine.js )
 Rails.application.config.assets.precompile += %w( teaspoon-teaspoon.js )
 ```
+
+### Angular Controllers -- Actions actually
+The part that seemed confusing is the concept of Controllers in Angular. Controllers are functions
+that are usually used in the mapping of a route to a controller and a template. So in rails
+that is more commonly associated with a Controller action not the controller. So in the routes
+I map controller_actions rather than just the controller.
+
+```
+angularApp.config(function ($routeProvider, $httpProvider) {
+
+  $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content');
+
+  $routeProvider.when('/events_list', {
+    controller: 'eventsController.action.indexAction', templateUrl: 'events_list.html'
+  });
+
+  $routeProvider.when('/events_new', {
+    controller: 'eventsController.action.newAction', templateUrl: 'events_new.html'
+  });
+
+});
+```
+
+The eventsController namespace looks like this:
+
+```
+var eventsController = function () {
+
+  var loadEvents = function ($scope, $resource) {
+    $scope.events = $resource('/events/:id.json', {id: '@id'}).query();
+  };
+
+  var constructNewEvent = function ($scope) {
+    $scope.theEvent = {};
+    $scope.theEvent.title = "";
+    $scope.theEvent.description = "";
+    $scope.theEvent.start_time = new Date();
+    $scope.theEvent.end_time = new Date();
+  };
+
+  var actionNamespace = {
+    indexAction : function ($scope, $resource, $location) {
+      loadEvents($scope, $resource); // get the events from the server
+
+      $scope.deleteEvent = function(theEvent) { // function that gets bound to the Delete button
+        theEvent.$delete(); 
+        loadEvents($scope, $resource);
+      };
+    },
+
+    newAction : function ($scope, $resource, $location) {
+      constructNewEvent($scope); // prepare the newEvent object
+
+      $scope.save = function () { // function that gets bound to the button Save
+        $resource('/events/:id.json').save($scope.theEvent);// Save the new calendar event to the server
+        $location.path('/events_list'); // send them back to the listing
+      };
+
+    }
+
+  };
+
+  var self = {
+    action : actionNamespace
+  };
+
+  return self;
+
+}.call();
+```
+
 
