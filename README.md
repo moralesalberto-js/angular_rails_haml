@@ -44,12 +44,12 @@ The javascript directory structure looks like this:
 
 ```
 | app
-| assets
-| -- application.js
-| -- angular_application.js
-| -- angular_controllers
-| --- angular_app_controller.js
-| --- event_controller.js
+| -- assets
+| ---- application.js
+| ---- angular_application.js
+| ---- angular_controllers
+| ------ angular_app_controller.js
+| ------ event_controller.js
 
 ```
 
@@ -63,7 +63,7 @@ from the same server. So we have two separate javascripts that get compiled:
 The compiler directive for the asset pipeline is defined in /config/initializers/assets.rb
 shown below. There is also teaspoon and jasmine to for testing.
 
-```
+``` ruby
 Rails.application.config.assets.precompile += %w( angular_application.css angular_application.js )
 Rails.application.config.assets.precompile += %w( teaspoon.css )
 Rails.application.config.assets.precompile += %w( jasmine/1.3.1.js )
@@ -77,7 +77,7 @@ that are usually used in the mapping of a route to a controller and a template. 
 that is more commonly associated with a Controller action not the controller. So in the routes
 I map controller_actions rather than just the controller.
 
-```
+``` js
 angularApp.config(function ($routeProvider, $httpProvider) {
 
   $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content');
