@@ -27,7 +27,6 @@ rails s
 If you ran the db:seed, then you can sign-in as:
 u: user1@test.com
 p: 111
-
 ```
 
 
@@ -50,7 +49,6 @@ The javascript directory structure looks like this:
 | ---- angular_controllers
 | ------ angular_app_controller.js
 | ------ event_controller.js
-
 ```
 
 ### angular_application.js
@@ -95,7 +93,7 @@ angularApp.config(function ($routeProvider, $httpProvider) {
 
 The eventsController namespace looks like this:
 
-```
+``` js
 var eventsController = function () {
 
   var loadEvents = function ($scope, $resource) {
