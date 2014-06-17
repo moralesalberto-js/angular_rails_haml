@@ -65,6 +65,7 @@ end
 gem 'angularjs-rails'
 gem 'angular-rails-templates'
 
+
 gem 'faker'
 
 

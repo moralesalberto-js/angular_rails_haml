@@ -5,8 +5,8 @@
 //= require turbolinks
 //= require angular
 //= require angular-resource
-//= require angular-route
 //= require angular-rails-templates
+//= require angular-ui-router
 //= require_tree ../templates
 //= require_tree ./angular_controllers
 
@@ -16,27 +16,34 @@
 // ngRoute to set the routes (URL to controller and template mapping)
 // templates is a js library that allows us to use HAML in our templates
 // and use the asset pipeline in rails (compression, compiling)
-var angularApp = angular.module('angularApp', ['ngResource', 'ngRoute', 'templates']);
+//
+// ui.router
+// This is the library to use for nesting views
+var angularApp = angular.module('angularApp', ['ngResource', 'ui.router', 'templates']);
 
+angularApp.run(function($rootScope, $state, $stateParams) {
+  $rootScope.$state = $state;
+  $rootScope.$stateParams = $stateParams;
+});
 
 // ROUTE CONFIGURATION
-// Map the URL to a specific controller action and a template
-// We map one controller action and provide a template Url to display
-// By calling a specific 'action' function, one is able to set some state
-// prior to showing the template
-// 
-// The templates are displayed in the ng-view html element
-// There appears to be only one of these at a time
-angularApp.config(function ($routeProvider, $httpProvider) {
+angularApp.config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
 
   $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content');
 
-  $routeProvider.when('/events_list', {
-    controller: 'eventsController.action.indexAction', templateUrl: 'events_list.html'
-  });
+  $urlRouterProvider.otherwise('/events_list');
 
-  $routeProvider.when('/events_new', {
-    controller: 'eventsController.action.newAction', templateUrl: 'events_new.html'
-  });
+  $stateProvider
+    .state('events_list', {
+      url: '/events_list',
+      templateUrl: 'events_list.html',
+      controller: 'eventsController.action.indexAction'
+    })
+    .state('events_new', {
+      url: '/events_new',
+      templateUrl: 'events_new.html',
+      controller: 'eventsController.action.newAction'
+    });
+
 
 });
